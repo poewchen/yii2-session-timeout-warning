@@ -1,6 +1,6 @@
 <?php
 
-namespace mgcode\sessionWarning\components;
+namespace poewchen\sessionWarning\components;
 
 use \Yii;
 use yii\base\BaseObject;
@@ -28,11 +28,11 @@ class SessionWarningBootstrap extends BaseObject implements BootstrapInterface
         }
         if ($this->initMessages) {
             $app = \Yii::$app->i18n;
-            if (!array_key_exists('mgcode/sessionWarning', $app->translations)) {
-                $app->translations['mgcode/sessionWarning'] = [
+            if (!array_key_exists('poewchen/sessionWarning', $app->translations)) {
+                $app->translations['poewchen/sessionWarning'] = [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'sourceLanguage' => 'en-US',
-                    'basePath' => '@mgcode/sessionWarning/messages',
+                    'basePath' => '@poewchen/sessionWarning/messages',
                 ];
             }
         }
