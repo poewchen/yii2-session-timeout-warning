@@ -92,7 +92,7 @@
 
             // Checks whether user is logged in.
             if (!userId || !timeout || userId != settings.userId) {
-                methods._logout.apply($e);
+                //methods._logout.apply($e);
                 return;
             }
 
