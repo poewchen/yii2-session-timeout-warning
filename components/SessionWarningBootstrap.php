@@ -76,9 +76,9 @@ class SessionWarningBootstrap extends BaseObject implements BootstrapInterface
     protected function clearCookies()
     {
         $time = time() - 60;
-        setcookie(static::COOKIE_USER, null, $time, '/');
-        setcookie(static::COOKIE_TIMEOUT, null, $time, '/');
-        setcookie(static::COOKIE_TIMEOUT_ABSOLUTE, null, $time, '/');
+        @setcookie(static::COOKIE_USER, null, $time, '/');
+        @setcookie(static::COOKIE_TIMEOUT, null, $time, '/');
+        @setcookie(static::COOKIE_TIMEOUT_ABSOLUTE, null, $time, '/');
     }
 
     /**
@@ -91,13 +91,13 @@ class SessionWarningBootstrap extends BaseObject implements BootstrapInterface
     protected function setCookie($userId, $timeout, $absoluteTimeout)
     {
         // We are using native functions, because we don't want to encrypt cookies. Cookies should be readable from JS.
-        setcookie(static::COOKIE_USER, $userId, $timeout + 60, '/');
-        setcookie(static::COOKIE_TIMEOUT, $timeout, $timeout + 60, '/');
+        @setcookie(static::COOKIE_USER, $userId, $timeout + 60, '/');
+        @setcookie(static::COOKIE_TIMEOUT, $timeout, $timeout + 60, '/');
 
         if ($absoluteTimeout) {
-            setcookie(static::COOKIE_TIMEOUT_ABSOLUTE, $absoluteTimeout, $absoluteTimeout + 60, '/');
+            @setcookie(static::COOKIE_TIMEOUT_ABSOLUTE, $absoluteTimeout, $absoluteTimeout + 60, '/');
         } else {
-            setcookie(static::COOKIE_TIMEOUT_ABSOLUTE, null, time() - 60, '/');
+            @setcookie(static::COOKIE_TIMEOUT_ABSOLUTE, null, time() - 60, '/');
         }
 
         return true;
